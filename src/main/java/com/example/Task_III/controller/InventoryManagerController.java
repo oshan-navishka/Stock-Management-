@@ -31,11 +31,10 @@ public class InventoryManagerController {
         this.restockService = restockService;
     }
 
-    // VIEW LOW-STOCK PRODUCTS (Threshold: 100 Units)
+    // VIEW LOW-STOCK PRODUCTS
 
     @GetMapping(value = "/products/low-stock", produces = MediaType.APPLICATION_JSON_VALUE)
     public CommonResponse getLowStockProducts() {
-        // Defined threshold is 100 units
         List<ProductDTO> products = productService.getLowStockProducts(100);
         return new CommonResponse(OPERATION_SUCCESS, products, SUCCESS_MASSAGE);
     }
